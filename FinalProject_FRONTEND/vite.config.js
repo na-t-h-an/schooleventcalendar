@@ -10,6 +10,7 @@ export default defineConfig({
         changeOrigin: true,
         secure: false
       }
-    }
+    },
+    open: 'http://localhost:5173/schooleventcalendar'
   }
 });
