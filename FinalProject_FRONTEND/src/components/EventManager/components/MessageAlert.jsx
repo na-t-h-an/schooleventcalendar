@@ -2,7 +2,7 @@ import React from 'react';
 
 const MessageAlert = ({ message }) => {
   if (!message) return null;
-  const isError = message.toLowerCase().includes('error') || message.includes('❌');
+  const isError = message.toLowerCase().includes('error');
   return <div className={isError ? 'errorMessage' : 'successMessage'}>{message}</div>;
 };
 
