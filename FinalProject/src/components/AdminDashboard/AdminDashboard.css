@@ -1,0 +1,159 @@
+/* Nothing to do here *//* AdminDashboard.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9f9f9;
+}
+
+.viewport {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #2c3e50;
+  color: white;
+  padding-top: 20px;
+}
+
+.sidebar header {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #34495e;
+}
+
+.sidebar .nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .nav li {
+  border-bottom: 1px solid #34495e;
+}
+
+.sidebar .nav li a {
+  display: block;
+  padding: 12px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar .nav li a:hover {
+  background-color: #34495e;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #ffffff;
+}
+
+.navbar {
+  background-color: #ecf0f1;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbarRight {
+  float: right;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbarRight li {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.containerFluid {
+   
+  padding: 20px;
+}
+
+.successMessage {
+  color: green;
+  margin-bottom: 10px;
+}
+
+.errorMessage {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.formContainer {
+  max-width: 1500px;
+  margin: auto;
+}
+
+.eventManagerForm .formGroup {
+  margin-bottom: 15px;
+}
+
+.formLabel {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.formInput {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.formActions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.submitButton, .cancelButton, .editButton, .deleteButton {
+  padding: 8px 16px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.submitButton {
+  background-color: #27ae60;
+}
+
+.cancelButton {
+  background-color: #95a5a6;
+}
+
+.editButton {
+  background-color: #3498db;
+}
+
+.deleteButton {
+  background-color: #e74c3c;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.dataTable th, .dataTable td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.dataTable th {
+  background-color: #f4f4f4;
+}
+
+.actionButtons button {
+  margin-right: 5px;
+}
