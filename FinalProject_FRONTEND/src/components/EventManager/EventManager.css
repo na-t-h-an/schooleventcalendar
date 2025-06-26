@@ -212,7 +212,14 @@ ul {
 
 .actionButtons {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 8px;
+}
+
+.actionButtons button {
+  width: 70px;
+  text-align: center;
 }
 
 .editButton,

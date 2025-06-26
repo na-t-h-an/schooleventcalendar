@@ -18,7 +18,7 @@ function App() {
       <Route path="/studentdashboard" element={<StudentDashboard />} />
       <Route path="/adminlogin" element={<AdminLogin />} />
       <Route path="/admindashboard" element={<AdminDashboard />} />
-      <Route path="/eventmanager" element={<EventManager />} />
+      <Route path="/eventmanager/*" element={<EventManager />} />
     </Routes>
   );
 }
