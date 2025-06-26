@@ -218,7 +218,7 @@ function AdminDashboard() {
     } else if (activeSection === 'viewStudents') {
       return loading ? <p>Loading...</p> : renderTable(students, 'student');
     }
-    return <p>Welcome to the Admin Dashboard LADA</p>;
+    return <p>Welcome to the Admin Dashboard LADAV2</p>;
   };
 
   return (
