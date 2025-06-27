@@ -1,0 +1,88 @@
+/* ====================================
+   FILE: src/components/Header.css
+   PURPOSE: Header component styles
+   ==================================== */
+
+/* === Header Shadow === */
+.shadow-header {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  margin: 0;
+  min-height: 80px;
+  display: flex;
+}
+
+@media (max-width: 767px) {
+  .shadow-header {
+    min-height: auto;
+    display: initial;
+  }
+}
+
+/* === Header Container === */
+.shadow-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+  .shadow-header .container {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* === Logo Styles === */
+.shadow-header .logo {
+  color: #5d5d5d;
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+@media (max-width: 767px) {
+  .shadow-header .logo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+/* === Navigation Links === */
+.shadow-header .links {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  .shadow-header .links {
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+.shadow-header .links li {
+  margin-left: 30px;
+  color: #666666; /* 🔁 changed to black */
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+@media (max-width: 767px) {
+  .shadow-header .links li {
+    margin-left: auto;
+  }
+}
+
+/* === Sign-up Button Styling === */
+.shadow-header .links li:last-child {
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: #ffffff !important; /* ✅ stays white */
+  background-color: #6c63ff;
+}
+
+/* === Link Hover Effects === */
+.shadow-header .links li:not(:last-child):hover {
+  color: #6c63ff;
+}

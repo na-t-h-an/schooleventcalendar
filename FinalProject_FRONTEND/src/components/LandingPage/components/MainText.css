@@ -1,0 +1,17 @@
+.purple-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #6c63ff; /* Vibrant purple */
+  color: #fff;
+  border: none;
+  border-radius: 999px; /* Fully rounded */
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.purple-button:hover {
+  background-color: #5a54e9; /* Slightly darker on hover */
+}
