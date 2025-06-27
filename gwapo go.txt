@@ -1,1 +1,16 @@
->>>>>>> parent of 5df056a (second commit)
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Header from './components/Header';
+import MainText from './components/MainText';
+import './LandingPage.css';
+
+const LandingPage = () => {
+  return (
+    <div className="landing-page">
+      <Header />
+      <MainText />
+    </div>
+  );
+};
+
+export default LandingPage;
