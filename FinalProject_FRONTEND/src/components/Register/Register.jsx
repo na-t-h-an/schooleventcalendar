@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Register.css'; // ✅ Use regular CSS
-import { createStudent } from '../../services/api';
+import './Register.css';
+import { createStudent, getUsers } from '../../services/api';
 
 export default function Register() {
   const [username, setUsername] = useState('');
@@ -18,7 +18,17 @@ export default function Register() {
     setMessage('');
 
     try {
+      const allUsers = await getUsers(); // Fetch all existing users
+      const userExists = allUsers.some(user => user.username === username);
+
+      if (userExists) {
+        setMessage('Username already exists. Please choose a different one.');
+        setLoading(false);
+        return;
+      }
+
       const studentData = {
+        typeUser: 'S',
         username,
         password,
         firstname: firstName,
@@ -30,7 +40,7 @@ export default function Register() {
 
       const response = await createStudent(studentData);
 
-      if (response && response.data) {
+      if (response) {
         setMessage('Registration successful! You can now login.');
         setUsername('');
         setPassword('');
@@ -40,11 +50,11 @@ export default function Register() {
 
         setTimeout(() => {
           window.location.href = '/login';
-        }, 2000);
+        }, 1000);
       }
     } catch (error) {
       console.error('Registration error:', error);
-      setMessage(`Registration failed: ${error.response?.data?.message || error.message || 'Unknown error'}`);
+      setMessage(`Registration failed: ${error.response?.data?.message || error.message}`);
     } finally {
       setLoading(false);
     }
