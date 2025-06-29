@@ -22,7 +22,7 @@ function EventManager() {
   const user = JSON.parse(localStorage.getItem('user'));
 
   if (!user) {
-    window.location.href = '/login';
+    window.location.href = '/schooleventcalendar/login';
     return null;
   }
 
@@ -128,7 +128,7 @@ function EventManager() {
       }
       await fetchEvents();
       clearForm();
-      navigate('/eventmanager/managevent');
+      navigate('/schooleventcalendar/eventmanager/managevent');
     } catch (error) {
       setMessage(`Error: ${error.message}`);
     }
@@ -150,7 +150,7 @@ function EventManager() {
 
     setEditMode(true);
     setEditEventId(event.eventId);
-    navigate('/eventmanager/createvent');
+    navigate('/schooleventcalendar/eventmanager/createvent');
   };
 
   const handleDelete = async (eventId) => {
@@ -167,7 +167,7 @@ function EventManager() {
 
   const handleLogout = () => {
     localStorage.clear();
-    window.location.href = '/login';
+    window.location.href = '/schooleventcalendar/login';
   };
 
   const handleEditChange = (e) => {
@@ -192,11 +192,13 @@ function EventManager() {
       };
       const response = await updateUser(user.userId, updatedUser);
       if (response?.data) {
-        setMessage('Profile updated successfully.');
         localStorage.setItem('user', JSON.stringify(response.data));
+        setMessage('Profile updated successfully.');
+        console.log("profile updated");
       }
     } catch (error) {
       setMessage('Failed to update profile');
+      console.log("profile updated");
     }
 
     setTimeout(() => setMessage(''), 3000);
@@ -262,7 +264,9 @@ function EventManager() {
                     onSubmit={handleProfileUpdate}
                     username={user.username}
                   />
-                  <button onClick={handleLogout} className="logoutButton">Logout</button>
+                  <button onClick={handleProfileUpdate} className="eventmanagerUpdateProfileButton">Update</button>
+                  <br/>
+                  <button onClick={handleLogout} className="eventmanagerLogoutButton">Logout</button>
                 </>
               }
             />

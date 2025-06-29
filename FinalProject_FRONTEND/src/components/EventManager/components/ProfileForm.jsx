@@ -14,7 +14,6 @@ const ProfileForm = ({ editData, onChange, onSubmit, username }) => (
       <input type="password" name="password" value={editData.password} onChange={onChange} placeholder="New Password" />
       <label>Confirm Password</label>
       <input type="password" name="confirmPassword" value={editData.confirmPassword} onChange={onChange} placeholder="Confirm Password" />
-      <button type="submit" className="updateProfileButton">Update Profile</button>
     </form>
   </>
 );

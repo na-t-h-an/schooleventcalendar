@@ -329,25 +329,10 @@ ul {
   border-radius: 4px;
 }
 
-.logoutButton {
-  margin-top: 20px;
+.eventmanagerLogoutButton {
   background-color: #dc3545;
   color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-}
-
-.logoutButton:hover {
-  background-color: #b82e32;
-}
-
-.updateProfileButton {
-  background-color: #007BFF;
-  color: white;
+  margin-top: 15px;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
@@ -357,7 +342,25 @@ ul {
   transition: background-color 0.3s ease;
 }
 
-.updateProfileButton:hover {
+
+.eventmanagerLogoutButton:hover {
+  background-color: #b82e32;
+}
+
+.eventmanagerUpdateProfileButton {
+  background-color: #007BFF;
+  color: white;
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.eventmanagerUpdateProfileButton:hover {
   background-color: #0056b3;
 }
 

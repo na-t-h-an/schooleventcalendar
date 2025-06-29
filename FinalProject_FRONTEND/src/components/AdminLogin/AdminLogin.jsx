@@ -13,7 +13,7 @@ function AdminLogin() {
 
     if (username === 'admin' && password === 'admin') {
       setMessage('Login successful! Redirecting...');
-      setTimeout(() => navigate('/admindashboard'), 1000);
+      setTimeout(() => navigate('/schooleventcalendar/admindashboard'), 1000);
     } else {
       setMessage('Invalid credentials. Please try again.');
     }
