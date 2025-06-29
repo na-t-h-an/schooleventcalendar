@@ -77,7 +77,7 @@ function AdminDashboard() {
 
   const handleLogout = () => {
     localStorage.clear();
-    navigate('/adminlogin');
+    navigate('/schooleventcalendar/adminlogin');
   };
 
   const handleUserInput = (e, setter) => {

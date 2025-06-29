@@ -163,15 +163,13 @@ ul {
 }
 
 .joinButton,
-.leaveButton,
-.logoutButton {
+.leaveButton{
   padding: 10px;
   font-size: 14px;
   font-weight: bold;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 100%;
 }
 
 .joinButton {
@@ -192,12 +190,39 @@ ul {
   background-color: #c82333;
 }
 
-.logoutButton {
-  margin-top: 20px;
+.studentdashboardLogoutButton {
+  background-color: #dc3545;
+  color: white;
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.logoutButton:hover {
+
+.studentdashboardLogoutButton:hover {
   background-color: #b82e32;
+}
+
+.studentdashboardUpdateProfileButton {
+  background-color: #007BFF;
+  color: white;
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.studentdashboardUpdateProfileButton:hover {
+  background-color: #0056b3;
 }
 
 .successMessage,

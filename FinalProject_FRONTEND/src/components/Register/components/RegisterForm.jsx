@@ -96,7 +96,7 @@ export default function RegisterForm({
       </LoadingButton>
 
       <div className="loginLink">
-        Already have an account? <Link to="/login">Login here</Link>
+        Already have an account? <Link to="/schooleventcalendar/login">Login here</Link>
       </div>
     </form>
   );

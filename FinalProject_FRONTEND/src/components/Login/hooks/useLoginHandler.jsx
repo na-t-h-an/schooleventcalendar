@@ -19,10 +19,10 @@ export const useLoginHandler = () => {
 
       switch (userData.typeUser) {
         case 'S':
-          navigate('/studentdashboard');
+          navigate('/schooleventcalendar/studentdashboard');
           break;
         case 'E':
-          navigate('/eventmanager');
+          navigate('/schooleventcalendar/eventmanager');
           break;
         default:
           setError('Invalid account type');

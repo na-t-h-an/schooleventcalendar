@@ -37,7 +37,7 @@ function StudentDashboard() {
 
   const handleLogout = () => {
     localStorage.clear();
-    window.location.href = '/login';
+    window.location.href = '/schooleventcalendar/login';
   };
 
   const fetchEvents = async () => {
@@ -302,11 +302,10 @@ function StudentDashboard() {
                 <label>Confirm Password</label>
                 <input type="password" name="confirmPassword" value={editData.confirmPassword} onChange={handleEditChange} />
               </div>
-              <button type="submit" className="joinButton">Update Profile</button>
             </form>
-            <div style={{ marginTop: '20px' }}>
-              <button onClick={handleLogout} className="logoutButton">Logout</button>
-            </div>
+              <button onClick={handleProfileUpdate} className="studentdashboardUpdateProfileButton">Update</button>
+              <br/>
+              <button onClick={handleLogout} className="studentdashboardLogoutButton">Logout</button>
           </div>
         );
       default:
