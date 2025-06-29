@@ -14,11 +14,48 @@
   max-width: 400px;
   padding: 40px;
   margin-top: -200px;
+  position: relative;
+}
+
+/* Back Link Styles */
+.backLink {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6c63ff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.backLink:hover {
+  color: #5a50d4;
+  text-decoration: underline;
+}
+
+.backLink:focus {
+  outline: 2px solid #6c63ff;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.backLink svg {
+  transition: transform 0.2s ease;
+}
+
+.backLink:hover svg {
+  transform: translateX(-2px);
 }
 
 .loginHeader {
   text-align: center;
   margin-bottom: 30px;
+  margin-top: 40px; /* Add top margin to accommodate back button */
 }
 
 .loginHeader h2 {
@@ -116,5 +153,15 @@
     width: 90%;
     padding: 20px;
     margin-top: 0;
+  }
+  
+  .backLink {
+    top: 15px;
+    left: 15px;
+    font-size: 13px;
+  }
+  
+  .loginHeader {
+    margin-top: 35px;
   }
 }
