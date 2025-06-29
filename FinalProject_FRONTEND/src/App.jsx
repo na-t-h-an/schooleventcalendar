@@ -7,12 +7,16 @@ import StudentDashboard from './components/StudentDashboard/StudentDashboard';
 import AdminLogin from './components/AdminLogin/AdminLogin';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import EventManager from './components/EventManager/EventManager';
+import About from './components/LandingPage/components/About';
+import Contact from './components/LandingPage/components/Contact';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/schooleventcalendar" replace />} />
       <Route path="/schooleventcalendar" element={<LandingPage />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/studentdashboard" element={<StudentDashboard />} />

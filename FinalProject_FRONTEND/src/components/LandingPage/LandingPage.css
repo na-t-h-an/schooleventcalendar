@@ -21,7 +21,7 @@ body {
 
 #root {
   background-color: #ffffff !important;
-  min-height: 100vh;
+  min-height: 0vh;
 }
 
 a {

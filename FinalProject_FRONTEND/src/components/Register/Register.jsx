@@ -1,147 +1,51 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import './Register.css';
-import { createStudent, getUsers } from '../../services/api';
+import Header from '../LandingPage/components/Header'; // make this global
+import BackButton from '../Login/components/BackButton';
+import RegisterForm from './components/RegisterForm';
+import { useRegisterHandler } from './hooks/useRegisterHandler';
+import { useFormState } from './hooks/useFormState'; 
+import { useNavigation } from '../Login/hooks/useNavigation'; // make this global
 
 export default function Register() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [middleName, setMiddleName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
+  const { formData, updateField, resetForm } = useFormState();
+  const { handleRegister, message, loading } = useRegisterHandler();
+  const { navigateToHome } = useNavigation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setMessage('');
-
-    try {
-      const allUsers = await getUsers(); // Fetch all existing users
-      const userExists = allUsers.some(user => user.username === username);
-
-      if (userExists) {
-        setMessage('Username already exists. Please choose a different one.');
-        setLoading(false);
-        return;
-      }
-
-      const studentData = {
-        typeUser: 'S',
-        username,
-        password,
-        firstname: firstName,
-        middlename: middleName,
-        lastname: lastName,
-      };
-
-      console.log('Registering student:', studentData);
-
-      const response = await createStudent(studentData);
-
-      if (response) {
-        setMessage('Registration successful! You can now login.');
-        setUsername('');
-        setPassword('');
-        setFirstName('');
-        setMiddleName('');
-        setLastName('');
-
-        setTimeout(() => {
-          window.location.href = '/login';
-        }, 1000);
-      }
-    } catch (error) {
-      console.error('Registration error:', error);
-      setMessage(`Registration failed: ${error.response?.data?.message || error.message}`);
-    } finally {
-      setLoading(false);
+    
+    const result = await handleRegister(formData);
+    
+    if (result.success) {
+      resetForm();
     }
   };
 
   return (
-    <div className="registerWrapper">
-      <div className="registerContainer">
-        <form onSubmit={handleSubmit} className="registerForm">
-          <div className="registerHeader">
-            <h2>Student Registration</h2>
-          </div>
-
-          {message && (
-            <div className={message.includes('failed') ? 'errorMessage' : 'successMessage'}>
-              {message}
-            </div>
-          )}
-
-          <div className="formGroup">
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              required
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="formInput"
-            />
-          </div>
-
-          <div className="formGroup">
-            <input
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              required
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              className="formInput"
-            />
-          </div>
-
-          <div className="formGroup">
-            <input
-              type="text"
-              name="middleName"
-              placeholder="Middle Name"
-              value={middleName}
-              onChange={(e) => setMiddleName(e.target.value)}
-              className="formInput"
-            />
-          </div>
-
-          <div className="formGroup">
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              required
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              className="formInput"
-            />
-          </div>
-
-          <div className="formGroup">
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="formInput"
-            />
-          </div>
-
-          <button type="submit" className="registerButton" disabled={loading}>
-            {loading ? 'Registering...' : 'Register'}
-          </button>
-
-          <div className="loginLink">
-            Already have an account? <Link to="/login">Login here</Link>
-          </div>
-        </form>
+    <>
+      <Header />
+      <div className="registerWrapper">
+        <div className="registerContainer">
+          <BackButton onClick={navigateToHome} />
+          
+          <RegisterForm
+            username={formData.username}
+            setUsername={(value) => updateField('username', value)}
+            firstName={formData.firstName}
+            setFirstName={(value) => updateField('firstName', value)}
+            middleName={formData.middleName}
+            setMiddleName={(value) => updateField('middleName', value)}
+            lastName={formData.lastName}
+            setLastName={(value) => updateField('lastName', value)}
+            password={formData.password}
+            setPassword={(value) => updateField('password', value)}
+            message={message}
+            loading={loading}
+            onSubmit={handleSubmit}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
