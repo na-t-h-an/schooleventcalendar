@@ -11,6 +11,6 @@ export default defineConfig({
         secure: false
       }
     },
-    open: 'http://localhost:5173/schooleventcalendar'
+    open: 'http://localhost:5173/schooleventcalendar/landing'
   }
 });
