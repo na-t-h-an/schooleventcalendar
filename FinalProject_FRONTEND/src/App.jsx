@@ -19,10 +19,10 @@ function App() {
       <Route path="/schooleventcalendar/contact" element={<Contact />} />
       <Route path="/schooleventcalendar/login" element={<Login />} />
       <Route path="/schooleventcalendar/register" element={<Register />} />
-      <Route path="/schooleventcalendar/studentdashboard" element={<StudentDashboard />} />
       <Route path="/schooleventcalendar/adminlogin" element={<AdminLogin />} />
       <Route path="/schooleventcalendar/admindashboard" element={<AdminDashboard />} />
       <Route path="/schooleventcalendar/eventmanager/*" element={<EventManager />} />
+      <Route path="/schooleventcalendar/studentdashboard/*" element={<StudentDashboard />} />
     </Routes>
   );
 }

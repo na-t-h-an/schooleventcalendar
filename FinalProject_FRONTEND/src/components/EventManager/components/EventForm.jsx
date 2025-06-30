@@ -8,6 +8,7 @@ const EventForm = ({ formData, onChange, onSubmit, onClear, editMode }) => (
     <input type="time" name="startTime" value={formData.startTime} onChange={onChange} required />
     <input type="time" name="endTime" value={formData.endTime} onChange={onChange} required />
     <input name="location" value={formData.location} onChange={onChange} placeholder="Location" required />
+    
     <div className="formActions">
       <button type="submit" className="submitButton">{editMode ? 'Update' : 'Create'} Event</button>
       <button type="button" onClick={onClear} className="clearButton">Clear</button>
