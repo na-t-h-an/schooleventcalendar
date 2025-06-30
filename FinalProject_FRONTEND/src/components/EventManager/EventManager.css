@@ -79,7 +79,7 @@ ul {
 
 /* CONTENT AREA */
 .content {
-  padding-top: 80px;
+  padding-top: 20px;
   background: #f4f4f4;
   min-height: 100vh;
   display: flex;

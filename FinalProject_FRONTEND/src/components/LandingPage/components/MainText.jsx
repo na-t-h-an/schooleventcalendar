@@ -12,7 +12,7 @@ const MainText = () => {
             Create, manage, and share events seamlessly with our easy-to-use event maker.
             Stay organized with built-in calendars, reminders, and RSVPs—all in one place!
           </p>
-          <Link to="/login" className="purple-button">
+          <Link to="/schooleventcalendar/login" className="purple-button">
             Try Now!
           </Link>
         </section>

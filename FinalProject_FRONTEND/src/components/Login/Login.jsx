@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './Login.css';
-import Header from '../LandingPage/components/Header'; // make this global
+import Header from '../LandingPage/components/Header'; // global
 import BackButton from './components/BackButton';
 import LoginForm from './components/LoginForm';
 import { useLoginHandler } from './hooks/useLoginHandler';
-import { useNavigation } from './hooks/useNavigation'; // make this global
+import { useNavigation } from './hooks/useNavigation'; // global
 
 export default function Login() {
   const [username, setUsername] = useState('');

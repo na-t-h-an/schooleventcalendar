@@ -52,7 +52,7 @@ export default function LoginForm({
       </LoadingButton>
 
       <div className="signupLink">
-        Don't have an account? <Link to="/register">Sign Up</Link>
+        Don't have an account? <Link to="/schooleventcalendar/register">Sign Up</Link>
       </div>
     </form>
   );

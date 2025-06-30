@@ -1,5 +1,5 @@
 /* Global Rules */
-* {
+/* * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -10,6 +10,11 @@ html {
   height: 100%;
 }
 
+#root {
+  background-color: #ffffff !important;
+  min-height: 0vh;
+} */
+
 body {
   font-family: 'Open Sans', sans-serif;
   background-color: #ffffff !important;
@@ -17,11 +22,6 @@ body {
   padding: 0;
   height: 100vh;
   overflow: hidden;
-}
-
-#root {
-  background-color: #ffffff !important;
-  min-height: 0vh;
 }
 
 a {
@@ -46,10 +46,12 @@ ul {
 /* Landing Page Wrapper */
 .landing-page {
   background-color: #ffffff !important;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Content Section */
