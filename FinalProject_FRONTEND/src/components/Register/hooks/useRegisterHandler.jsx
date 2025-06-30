@@ -39,8 +39,8 @@ export const useRegisterHandler = () => {
         
         // Redirect to login page after 1 second
         setTimeout(() => {
-          window.location.href = '/login';
-        }, 1000);
+          window.location.href = '/schooleventcalendar/login';
+        }, 2000);
 
         return { success: true, data: response };
       }
