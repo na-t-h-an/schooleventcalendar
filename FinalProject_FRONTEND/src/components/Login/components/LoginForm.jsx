@@ -11,13 +11,16 @@ export default function LoginForm({
   setPassword, 
   error, 
   loading, 
-  onSubmit 
+  onSubmit,
+  headerTitle = 'Login to your account',
+  headerSubtitle = 'Enter your credentials to access your student or event manager dashboard',
+  hideSignupLink = false
 }) {
   return (
     <form onSubmit={onSubmit} className="loginForm">
       <div className="loginHeader">
-        <h2>Login to your account</h2>
-        <p>Enter your credentials to access your student or event manager dashboard</p>
+        <h2>{headerTitle}</h2>
+        <p>{headerSubtitle}</p>
       </div>
 
       <ErrorMessage message={error} />
@@ -51,9 +54,11 @@ export default function LoginForm({
         Login
       </LoadingButton>
 
-      <div className="signupLink">
-        Don't have an account? <Link to="/schooleventcalendar/register">Sign Up</Link>
-      </div>
+      {!hideSignupLink && (
+        <div className="signupLink">
+          Don't have an account? <Link to="/schooleventcalendar/register">Sign Up</Link>
+        </div>
+      )}
     </form>
   );
 }

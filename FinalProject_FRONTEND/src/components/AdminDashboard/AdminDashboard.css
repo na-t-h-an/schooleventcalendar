@@ -1,3 +1,4 @@
+/* AdminDashboard.css */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -9,11 +10,19 @@ body {
   height: 100vh;
 }
 
+/* ==========================================================================
+   SIDEBAR STYLES
+   ========================================================================== */
 .sidebar {
   width: 220px;
   background-color: #2c3e50;
   color: white;
   padding-top: 20px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
 }
 
 .sidebar header {
@@ -22,6 +31,12 @@ body {
   padding: 10px;
   font-weight: bold;
   border-bottom: 1px solid #34495e;
+}
+
+.admin-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
 }
 
 .sidebar .nav {
@@ -45,11 +60,47 @@ body {
   background-color: #34495e;
 }
 
+/* Navigation Button Styles */
+.nav-button {
+  width: 100%;
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+  display: block;
+}
+
+.nav-button:hover {
+  background-color: #34495e;
+}
+
+.nav-button.active {
+  background-color: #3498db;
+  color: white;
+}
+
+.nav-button.logout-button {
+  color: #e74c3c;
+}
+
+.nav-button.logout-button:hover {
+  background-color: #c0392b;
+  color: white;
+}
+
+/* ==========================================================================
+   CONTENT STYLES
+   ========================================================================== */
 .content {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
   background-color: #ffffff;
+  margin-left: 220px; /* Account for fixed sidebar */
 }
 
 .navbar {
@@ -78,16 +129,30 @@ body {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+/* ==========================================================================
+   MESSAGE STYLES
+   ========================================================================== */
 .successMessage {
   color: green;
   margin-bottom: 10px;
+  padding: 10px;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
 }
 
 .errorMessage {
   color: red;
   margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
 }
 
+/* ==========================================================================
+   FORM STYLES
+   ========================================================================== */
 .formContainer {
   max-width: 1500px;
   margin: auto;
@@ -101,12 +166,22 @@ body {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: #2c3e50;
 }
 
 .formInput {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
 }
 
 .formActions {
@@ -116,46 +191,122 @@ body {
   gap: 10px;
 }
 
+/* ==========================================================================
+   BUTTON STYLES
+   ========================================================================== */
 .submitButton, .cancelButton, .editButton, .deleteButton {
   padding: 8px 16px;
   border: none;
   color: white;
   cursor: pointer;
   border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
 }
 
 .submitButton {
   background-color: #27ae60;
 }
 
+.submitButton:hover {
+  background-color: #229954;
+}
+
 .cancelButton {
   background-color: #95a5a6;
+}
+
+.cancelButton:hover {
+  background-color: #839192;
 }
 
 .editButton {
   background-color: #3498db;
 }
 
+.editButton:hover {
+  background-color: #2980b9;
+}
+
 .deleteButton {
   background-color: #e74c3c;
 }
 
+.deleteButton:hover {
+  background-color: #c0392b;
+}
+
+/* ==========================================================================
+   TABLE STYLES
+   ========================================================================== */
 .dataTable {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .dataTable th, .dataTable td {
-  border: 1px solid #ccc;
-  padding: 10px;
+  border: 1px solid #ddd;
+  padding: 12px;
   text-align: left;
 }
 
 .dataTable th {
-  background-color: #f4f4f4;
+  background-color: #34495e;
+  color: white;
+  font-weight: bold;
+}
+
+.dataTable tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.dataTable tbody tr:hover {
+  background-color: #e8f4f8;
+}
+
+.actionButtons {
+  white-space: nowrap;
 }
 
 .actionButtons button {
   margin-right: 5px;
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+/* ==========================================================================
+   RESPONSIVE STYLES
+   ========================================================================== */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  .content {
+    margin-left: 0;
+  }
+  
+  .viewport {
+    flex-direction: column;
+  }
+  
+  .containerFluid {
+    max-width: 100%;
+    margin: 0;
+  }
+  
+  .dataTable {
+    font-size: 12px;
+  }
+  
+  .dataTable th, .dataTable td {
+    padding: 8px;
+  }
 }
