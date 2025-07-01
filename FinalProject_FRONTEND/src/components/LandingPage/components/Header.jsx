@@ -4,19 +4,17 @@ import './Header.css';
 
 const Header = () => {
   return (
-    <header className="shadow-header">
+    <header className="header">
       <div className="container">
         <Link to="/" className="logo">
           School <b>Event Planner</b>
         </Link>
-        <nav>
           <ul className="links">
             <li><Link to="/schooleventcalendar/about">About Us</Link></li>
             <li><Link to="/schooleventcalendar/contact">Contact Us</Link></li>
             <li><Link to="/schooleventcalendar/login">Login</Link></li>
             <li><Link to="/schooleventcalendar/register">Sign-Up</Link></li>
           </ul>
-        </nav>
       </div>
     </header>
   );

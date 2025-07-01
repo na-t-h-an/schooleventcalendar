@@ -12,7 +12,7 @@ function StudentHeader({ username }) {
           <li onClick={() => navigate('/schooleventcalendar/studentdashboard/joinedevents')}>Joined Events</li>
           <li onClick={() => navigate('/schooleventcalendar/studentdashboard/calendarview')}>Calendar View</li>
           <li onClick={() => navigate('/schooleventcalendar/studentdashboard/profile')}>
-            {username || 'My Profile'}
+            {'User'}
           </li>
         </ul>
       </div>
