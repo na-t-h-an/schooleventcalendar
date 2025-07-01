@@ -19,7 +19,9 @@ export default function Login() {
 
   return (
     <>
-      <Header />
+        <div className="landing-page">
+      <Header />     
+    </div>
       <div className="loginWrapper">
         <div className="loginContainer">
           <BackButton onClick={navigateToHome} />

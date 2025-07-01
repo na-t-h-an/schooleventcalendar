@@ -5,7 +5,7 @@ import './MainText.css';
 const MainText = () => {
   return (
     <main className="content">
-      <div className="container">
+      <div className="container" style={{marginTop: '-5%'}}>
         <section className="info">
           <h1>Effortless Event Planning, One Click at a Time!</h1>
           <p>
