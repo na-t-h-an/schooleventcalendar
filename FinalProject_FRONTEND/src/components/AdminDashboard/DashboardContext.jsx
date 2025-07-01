@@ -4,7 +4,7 @@ import {
   createStudent, getStudents,
   updateUser, deleteUser,
   postEvent, getEvents, putEvent, deleteEvent
-} from '../../services/api';
+} from  '../../services/api';
 
 export const DashboardContext = createContext();
 
@@ -99,13 +99,14 @@ export const DashboardProvider = ({ children, activeSection, setActiveSection })
     e.preventDefault();
     try {
       const payload = {
-        eventName: eventData.eventName,
-        eventDescription: eventData.eventDescription,
-        eventSchedule: eventData.eventSchedule,
-        startTime: eventData.startTime,
-        endTime: eventData.endTime,
-        eventLocation: eventData.eventLocation
-      };
+  eventName: eventData.eventName,
+  eventDescription: eventData.eventDescription,
+  eventSchedule: eventData.eventSchedule,
+  startTime: eventData.startTime + ":00",
+  endTime: eventData.endTime + ":00",
+  eventLocation: eventData.eventLocation,
+  eventIsActive: true
+};
 
       const response = editMode
         ? await putEvent(editId, payload)

@@ -13,18 +13,18 @@ import Contact from './components/LandingPage/components/Contact';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/schooleventcalendar/landing" replace />} />
+      <Route path="/" element={<Navigate to="/schooleventcalendar/landing"/>} />
       <Route path="/schooleventcalendar/landing" element={<LandingPage />} />
       <Route path="/schooleventcalendar/about" element={<About />} />
       <Route path="/schooleventcalendar/contact" element={<Contact />} />
       <Route path="/schooleventcalendar/login" element={<Login />} />
       <Route path="/schooleventcalendar/register" element={<Register />} />
       <Route path="/schooleventcalendar/adminlogin" element={<AdminLogin />} />
-      <Route path="/schooleventcalendar/admindashboard" element={<AdminDashboard />} />
+      <Route path="/schooleventcalendar/admindashboard" element={<AdminDashboard />} /> 
       <Route path="/schooleventcalendar/eventmanager/*" element={<EventManager />} />
       <Route path="/schooleventcalendar/studentdashboard/*" element={<StudentDashboard />} />
     </Routes>
   );
 }
 
-export default App;
+export default App; //     

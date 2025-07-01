@@ -1,39 +1,42 @@
 import React, { useContext } from 'react';
 import { DashboardContext } from '../../DashboardContext';
+import RegisterForm from '../../../Register/components/RegisterForm';
 
 export default function CreateStudent() {
   const {
-    studentData, setStudentData, handleUserInput,
-    handleUserSubmit, editMode, resetForms, setActiveSection
+    studentData, setStudentData,
+    handleUserInput, handleUserSubmit,
+    editMode, resetForms, setActiveSection,
+    message,
   } = useContext(DashboardContext);
 
-  const onChange = (e) => handleUserInput(e, setStudentData);
-
   return (
-    <form onSubmit={(e) => handleUserSubmit(e, true)} className="eventManagerForm">
-      <h2>{editMode ? 'Edit' : 'Create'} Student</h2>
-      {['username', 'password', 'firstname', 'middlename', 'lastname'].map(field => (
-        <div className="formGroup" key={field}>
-          <label className="formLabel">{field}</label>
-          <input
-            type={field === 'password' ? 'password' : 'text'}
-            name={field}
-            value={studentData[field]}
-            onChange={onChange}
-            required={!(field === 'middlename' || (field === 'password' && editMode))}
-            className="formInput"
-          />
-        </div>
-      ))}
-      <div className="formActions">
-        <button type="submit" className="submitButton">{editMode ? 'Update' : 'Create'}</button>
-        {editMode && (
-          <button type="button" className="cancelButton" onClick={() => {
-            resetForms();
-            setActiveSection('viewStudents');
-          }}>Cancel</button>
-        )}
-      </div>
-    </form>
+    <RegisterForm
+      username={studentData.username}
+      setUsername={(v) => setStudentData({ ...studentData, username: v })}
+      firstName={studentData.firstname}
+      setFirstName={(v) => setStudentData({ ...studentData, firstname: v })}
+      middleName={studentData.middlename}
+      setMiddleName={(v) => setStudentData({ ...studentData, middlename: v })}
+      lastName={studentData.lastname}
+      setLastName={(v) => setStudentData({ ...studentData, lastname: v })}
+      password={studentData.password}
+      setPassword={(v) => setStudentData({ ...studentData, password: v })}
+      message={message}
+      loading={false}
+      onSubmit={(e) => handleUserSubmit(e, true)} // true = Student
+      formTitle={editMode ? 'Edit Student' : 'Create Student'}
+      submitLabel={editMode ? 'Update' : 'Create'}
+      showBackLink={false}
+      showLoginLink={false}
+      onCancel={
+        editMode
+          ? () => {
+              resetForms();
+              setActiveSection('viewStudents');
+            }
+          : null
+      }
+    />
   );
 }
