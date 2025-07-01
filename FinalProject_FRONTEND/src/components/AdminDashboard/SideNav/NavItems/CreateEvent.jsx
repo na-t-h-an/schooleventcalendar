@@ -1,37 +1,30 @@
 import React, { useContext } from 'react';
 import { DashboardContext } from '../../DashboardContext';
+import { CreateEventPage } from '../../../EventManager/pages';
 
 export default function CreateEvent() {
   const {
-    eventData, setEventData, handleUserInput,
-    handleEventSubmit, editMode, resetForms, setActiveSection
+    eventData,
+    setEventData,
+    message,
+    editMode,
+    handleEventSubmit,
+    resetForms
   } = useContext(DashboardContext);
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEventData((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
-    <form onSubmit={handleEventSubmit} className="eventManagerForm">
-      <h2>{editMode ? 'Edit' : 'Create'} Event</h2>
-      {['eventName', 'eventDescription', 'eventSchedule', 'startTime', 'endTime', 'eventLocation'].map(field => (
-        <div className="formGroup" key={field}>
-          <label className="formLabel">{field}</label>
-          <input
-            type={field.includes('Time') ? 'time' : field.includes('Schedule') ? 'date' : 'text'}
-            name={field}
-            value={eventData[field]}
-            onChange={(e) => handleUserInput(e, setEventData)}
-            required
-            className="formInput"
-          />
-        </div>
-      ))}
-      <div className="formActions">
-        <button type="submit" className="submitButton">{editMode ? 'Update' : 'Create'}</button>
-        {editMode && (
-          <button type="button" className="cancelButton" onClick={() => {
-            resetForms();
-            setActiveSection('viewEvents');
-          }}>Cancel</button>
-        )}
-      </div>
-    </form>
+    <CreateEventPage
+      editMode={editMode}
+      message={message}
+      formData={eventData}
+      handleInputChange={handleInputChange}
+      submitHandler={handleEventSubmit}
+      clearAll={resetForms}
+    />
   );
 }

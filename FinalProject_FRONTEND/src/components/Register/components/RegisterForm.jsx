@@ -17,12 +17,19 @@ export default function RegisterForm({
   setPassword,
   message,
   loading,
-  onSubmit
+  onSubmit,
+  formTitle = 'Student Registration',
+  submitLabel = 'Register',
+ 
+  showLoginLink = true,
+  onCancel
 }) {
   return (
     <form onSubmit={onSubmit} className="registerForm">
+     
+
       <div className="registerHeader">
-        <h2>Student Registration</h2>
+        <h2>{formTitle}</h2>
       </div>
 
       <MessageDisplay message={message} />
@@ -90,14 +97,22 @@ export default function RegisterForm({
         type="submit"
         className="registerButton"
         loading={loading}
-        loadingText="Registering..."
+        loadingText={`${submitLabel}ing...`}
       >
-        Register
+        {submitLabel}
       </LoadingButton>
 
-      <div className="loginLink">
-        Already have an account? <Link to="/schooleventcalendar/login">Login here</Link>
-      </div>
+      {onCancel && (
+        <button type="button" className="cancelButton" onClick={onCancel}>
+          Cancel
+        </button>
+      )}
+
+      {showLoginLink && (
+        <div className="loginLink">
+          Already have an account? <Link to="/schooleventcalendar/login">Login here</Link>
+        </div>
+      )}
     </form>
   );
 }

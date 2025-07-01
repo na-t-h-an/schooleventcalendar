@@ -4,7 +4,8 @@ import CreateStudent from './NavItems/CreateStudent.jsx';
 import ViewStudents from './NavItems/ViewStudents.jsx';
 import CreateEvent from './NavItems/CreateEvent.jsx';
 import ViewEvents from './NavItems/ViewEvents.jsx';
-import { DashboardProvider } from '../DashboardContext';
+import { DashboardProvider } from '../DashboardContext.jsx';
+import CreateEventManager from './NavItems/CreateEventManager.jsx';
 
 const SideNav = ({ activeSection, onSectionChange, onLogout, onResetForms }) => {
   const handleNavClick = (section, shouldResetForms = false) => {
@@ -17,17 +18,17 @@ const SideNav = ({ activeSection, onSectionChange, onLogout, onResetForms }) => 
   const renderContent = () => {
     switch (activeSection) {
       case 'createEventManager':
-        return <CreateEvent />;
+        return <CreateEventManager />; // using already register form
       case 'viewEventManagers':
-        return <ViewEventManagers />;
+        return <ViewEventManagers />; // sing a shared table rendering function, likely called renderTable can be turned into a component
       case 'createStudent':
-        return <CreateStudent />;
+        return <CreateStudent />; // using already register form
       case 'viewStudents':
-        return <ViewStudents />;
+        return <ViewStudents />; // sing a shared table rendering function, likely called renderTable can be turned into a component
       case 'createEvent':
-        return <CreateEvent />;
+        return <CreateEvent />; // used ladas create event form
       case 'viewEvents':
-        return <ViewEvents />;
+        return <ViewEvents />; //  bug title date and location no data shown when created by admin but all goods if event manager nag himo
       default:
         return <p style={{ padding: '20px' }}>Welcome to Admin Dashboard</p>;
     }
