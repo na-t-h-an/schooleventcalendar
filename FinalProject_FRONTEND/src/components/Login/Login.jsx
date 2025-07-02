@@ -26,7 +26,7 @@ export default function Login() {
         <div className="loginContainer">
           <BackButton onClick={navigateToHome} />
           
-          <LoginForm
+          <LoginForm        // dont need to add these props loading or hideSignupLink={false} 
             username={username}
             setUsername={setUsername}
             password={password}
