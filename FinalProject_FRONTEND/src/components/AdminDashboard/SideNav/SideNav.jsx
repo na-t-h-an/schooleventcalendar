@@ -1,11 +1,8 @@
 import React from 'react';
-import ViewEventManagers from './NavItems/ViewEventManager.jsx';
-import CreateStudent from './NavItems/CreateStudent.jsx';
-import ViewStudents from './NavItems/ViewStudents.jsx';
-import CreateEvent from './NavItems/CreateEvent.jsx';
-import ViewEvents from './NavItems/ViewEvents.jsx';
+import EventManagerSection from './NavItems/EventManagerSection.jsx';
+import StudentSection from './NavItems/StudentSection.jsx';
+import EventsSection from './NavItems/EventsSection.jsx';
 import { DashboardProvider } from '../DashboardContext.jsx';
-import CreateEventManager from './NavItems/CreateEventManager.jsx';
 
 const SideNav = ({ activeSection, onSectionChange, onLogout, onResetForms }) => {
   const handleNavClick = (section, shouldResetForms = false) => {
@@ -17,185 +14,80 @@ const SideNav = ({ activeSection, onSectionChange, onLogout, onResetForms }) => 
 
   const renderContent = () => {
     switch (activeSection) {
-      case 'createEventManager':
-        return <CreateEventManager />; // using already register form
-      case 'viewEventManagers':
-        return <ViewEventManagers />; // sing a shared table rendering function, likely called renderTable can be turned into a component
-      case 'createStudent':
-        return <CreateStudent />; // using already register form
-      case 'viewStudents':
-        return <ViewStudents />; // sing a shared table rendering function, likely called renderTable can be turned into a component
-      case 'createEvent':
-        return <CreateEvent />; // used ladas create event form
-      case 'viewEvents':
-        return <ViewEvents />; //  bug title date and location no data shown when created by admin but all goods if event manager nag himo
+      case 'eventManager':
+        return <EventManagerSection />;
+      case 'student':
+        return <StudentSection />;
+      case 'events':
+        return <EventsSection />;
       default:
-        return <p style={{ padding: '20px' }}>Welcome to Admin Dashboard</p>;
+        return (
+          <div className="welcome-section">
+            <h2>Welcome to Admin Dashboard</h2>
+            <p>Select a section from the sidebar to get started.</p>
+          </div>
+        );
     }
   };
 
   return (
     <DashboardProvider activeSection={activeSection} setActiveSection={onSectionChange}>
-      <div className="viewport" style={{ display: 'flex', height: '100vh' }}>
+      <div className="dashboard-container">
         
-        {/* Sidebar - Only Navigation Buttons */}
-        <div className="sidebar" style={{ width: '250px', backgroundColor: '#1a2b3c', color: 'white' }}>
-          <header style={{ padding: '20px', fontWeight: 'bold' }}>
-            <span className="admin-title">Admin Page</span>
+        {/* Modern Sidebar */}
+        <div className="modern-sidebar">
+          <header className="sidebar-header">
+            <div className="logo-section">
+              <div className="logo-icon">📊</div>
+              <span className="admin-title">Admin Panel</span>
+            </div>
           </header>
-          <ul className="nav" style={{ listStyle: 'none', padding: 0 }}>
-            <li>
-              <button
-                className={`nav-button ${activeSection === 'createEventManager' ? 'active' : ''}`}
-                onClick={() => handleNavClick('createEventManager', true)}
-                style={{
-                  width: '100%',
-                  padding: '12px 20px',
-                  border: 'none',
-                  backgroundColor: activeSection === 'createEventManager' ? '#3498db' : 'transparent',
-                  color: 'white',
-                  textAlign: 'left',
-                  cursor: 'pointer',
-                  fontSize: '14px',
-                  transition: 'background-color 0.3s'
-                }}
-              >
-                Create EventManager
-              </button>
-            </li>
+          
+          <nav className="sidebar-nav">
+            <ul className="nav-list">
+              <li>
+                <button
+                  className={`nav-item ${activeSection === 'eventManager' ? 'active' : ''}`}
+                  onClick={() => handleNavClick('eventManager')}
+                >
+                  <span className="nav-icon">👥</span>
+                  <span className="nav-text">EventManager</span>
+                </button>
+              </li>
+              
+              <li>
+                <button
+                  className={`nav-item ${activeSection === 'student' ? 'active' : ''}`}
+                  onClick={() => handleNavClick('student')}
+                >
+                  <span className="nav-icon">🎓</span>
+                  <span className="nav-text">Student</span>
+                </button>
+              </li>
+
+              <li>
+                <button
+                  className={`nav-item ${activeSection === 'events' ? 'active' : ''}`}
+                  onClick={() => handleNavClick('events')}
+                >
+                  <span className="nav-icon">📅</span>
+                  <span className="nav-text">Events</span>
+                </button>
+              </li>
+            </ul>
             
-            <li>
-              <button
-                className={`nav-button ${activeSection === 'viewEventManagers' ? 'active' : ''}`}
-                onClick={() => handleNavClick('viewEventManagers')}
-                style={{
-                  width: '100%',
-                  padding: '12px 20px',
-                  border: 'none',
-                  backgroundColor: activeSection === 'viewEventManagers' ? '#3498db' : 'transparent',
-                  color: 'white',
-                  textAlign: 'left',
-                  cursor: 'pointer',
-                  fontSize: '14px',
-                  transition: 'background-color 0.3s'
-                }}
-              >
-                View EventManagers
+            <div className="sidebar-footer">
+              <button className="logout-btn" onClick={onLogout}>
+                <span className="nav-icon">🚪</span>
+                <span className="nav-text">Logout</span>
               </button>
-            </li>
-
-            <li>
-              <button
-                className={`nav-button ${activeSection === 'createStudent' ? 'active' : ''}`}
-                onClick={() => handleNavClick('createStudent', true)}
-                style={{
-                  width: '100%',
-                  padding: '12px 20px',
-                  border: 'none',
-                  backgroundColor: activeSection === 'createStudent' ? '#3498db' : 'transparent',
-                  color: 'white',
-                  textAlign: 'left',
-                  cursor: 'pointer',
-                  fontSize: '14px',
-                  transition: 'background-color 0.3s'
-                }}
-              >
-                Create Student
-              </button>
-            </li>
-
-            <li>
-              <button
-                className={`nav-button ${activeSection === 'viewStudents' ? 'active' : ''}`}
-                onClick={() => handleNavClick('viewStudents')}
-                style={{
-                  width: '100%',
-                  padding: '12px 20px',
-                  border: 'none',
-                  backgroundColor: activeSection === 'viewStudents' ? '#3498db' : 'transparent',
-                  color: 'white',
-                  textAlign: 'left',
-                  cursor: 'pointer',
-                  fontSize: '14px',
-                  transition: 'background-color 0.3s'
-                }}
-              >
-                View Students
-              </button>
-            </li>
-
-            <li>
-              <button
-                className={`nav-button ${activeSection === 'createEvent' ? 'active' : ''}`}
-                onClick={() => handleNavClick('createEvent', true)}
-                style={{
-                  width: '100%',
-                  padding: '12px 20px',
-                  border: 'none',
-                  backgroundColor: activeSection === 'createEvent' ? '#3498db' : 'transparent',
-                  color: 'white',
-                  textAlign: 'left',
-                  cursor: 'pointer',
-                  fontSize: '14px',
-                  transition: 'background-color 0.3s'
-                }}
-              >
-                Create Event
-              </button>
-            </li>
-
-            <li>
-              <button
-                className={`nav-button ${activeSection === 'viewEvents' ? 'active' : ''}`}
-                onClick={() => handleNavClick('viewEvents')}
-                style={{
-                  width: '100%',
-                  padding: '12px 20px',
-                  border: 'none',
-                  backgroundColor: activeSection === 'viewEvents' ? '#3498db' : 'transparent',
-                  color: 'white',
-                  textAlign: 'left',
-                  cursor: 'pointer',
-                  fontSize: '14px',
-                  transition: 'background-color 0.3s'
-                }}
-              >
-                View Events
-              </button>
-            </li>
-
-            <li>
-              <button
-                className="nav-button"
-                onClick={onLogout}
-                style={{
-                  width: '100%',
-                  padding: '12px 20px',
-                  border: 'none',
-                  backgroundColor: 'transparent',
-                  color: 'white',
-                  textAlign: 'left',
-                  cursor: 'pointer',
-                  fontSize: '14px',
-                  transition: 'background-color 0.3s'
-                }}
-              >
-                Logout
-              </button>
-            </li>
-          </ul>
+            </div>
+          </nav>
         </div>
 
-        {/* Main Content Area - Forms and Tables Display Here */}
-        <div className="content" style={{ 
-          flexGrow: 1, 
-          padding: '30px', 
-          overflowY: 'auto',
-          backgroundColor: '#f8f9fa'
-        }}>
-          <div className="containerFluid">
-            {renderContent()}
-          </div>
+        {/* Main Content Area */}
+        <div className="main-content">
+          {renderContent()}
         </div>
         
       </div>

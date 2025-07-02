@@ -22,7 +22,7 @@ export default function AdminDashboard() {
   return (
     <SideNav
       activeSection={activeSection}
-      onSectionChange={handleSectionChange}
+      onSectionChange={setActiveSection}
       onResetForms={handleResetForms}
       onLogout={handleLogout}
     />

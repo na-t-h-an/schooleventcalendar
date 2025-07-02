@@ -1,32 +1,46 @@
+// @refresh reset
 import React, { createContext, useState } from 'react';
 import {
   createEventManager, getEventManagers,
   createStudent, getStudents,
   updateUser, deleteUser,
   postEvent, getEvents, putEvent, deleteEvent
-} from  '../../services/api';
+} from '../../services/api';
 
-export const DashboardContext = createContext();
+const DashboardContext = createContext();
 
-export const DashboardProvider = ({ children, activeSection, setActiveSection }) => {
+const DashboardProvider = ({ children }) => {
+  // Form States
   const [formData, setFormData] = useState({ username: '', password: '', firstname: '', middlename: '', lastname: '' });
   const [studentData, setStudentData] = useState({ username: '', password: '', firstname: '', middlename: '', lastname: '' });
-  const [eventData, setEventData] = useState({ eventName: '', eventDescription: '', eventSchedule: '', startTime: '', endTime: '', eventLocation: '' });
+  const [eventData, setEventData] = useState({
+  eventName: '',
+  eventDescription: '',
+  eventSchedule: '',
+  startTime: '',
+  endTime: '',
+  eventLocation: ''
+});
 
+  // General States
+  const [activeSection, setActiveSection] = useState('events'); // ✅ changed from 'viewEvents' to 'events'
   const [message, setMessage] = useState('');
-  const [eventManagers, setEventManagers] = useState([]);
-  const [students, setStudents] = useState([]);
-  const [events, setEvents] = useState([]);
-
   const [loading, setLoading] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [editId, setEditId] = useState(null);
   const [editEntityType, setEditEntityType] = useState(null);
 
+  // Data Arrays
+  const [eventManagers, setEventManagers] = useState([]);
+  const [students, setStudents] = useState([]);
+  const [events, setEvents] = useState([]);
+
+  // Fetchers
   const fetchEventManagers = async () => {
     setLoading(true);
     try {
-      setEventManagers(await getEventManagers());
+      const data = await getEventManagers();
+      setEventManagers(data);
     } catch {
       setMessage('Error fetching event managers');
     } finally {
@@ -56,6 +70,7 @@ export const DashboardProvider = ({ children, activeSection, setActiveSection })
     }
   };
 
+  // Reset all forms
   const resetForms = () => {
     setFormData({ username: '', password: '', firstname: '', middlename: '', lastname: '' });
     setStudentData({ username: '', password: '', firstname: '', middlename: '', lastname: '' });
@@ -65,6 +80,7 @@ export const DashboardProvider = ({ children, activeSection, setActiveSection })
     setEditEntityType(null);
   };
 
+  // Form field change handler
   const handleUserInput = (e, setter) => {
     const { name, value } = e.target;
     setter(prev => ({ ...prev, [name]: value }));
@@ -87,7 +103,8 @@ export const DashboardProvider = ({ children, activeSection, setActiveSection })
       if (response) {
         setMessage(`${isStudent ? 'Student' : 'Event Manager'} ${editMode ? 'updated' : 'created'} successfully!`);
         resetForms();
-        setActiveSection(isStudent ? 'viewStudents' : 'viewEventManagers');
+        isStudent ? fetchStudents() : fetchEventManagers();
+        setActiveSection(isStudent ? 'student' : 'eventManager'); // ✅ changed from 'viewStudents' and 'viewEventManagers'
       }
     } catch (err) {
       setMessage('Error: ' + (err.response?.data?.message || err.message));
@@ -99,14 +116,14 @@ export const DashboardProvider = ({ children, activeSection, setActiveSection })
     e.preventDefault();
     try {
       const payload = {
-  eventName: eventData.eventName,
-  eventDescription: eventData.eventDescription,
-  eventSchedule: eventData.eventSchedule,
-  startTime: eventData.startTime + ":00",
-  endTime: eventData.endTime + ":00",
-  eventLocation: eventData.eventLocation,
-  eventIsActive: true
-};
+        eventName: eventData.eventName,
+        eventDescription: eventData.eventDescription,
+        eventSchedule: eventData.eventSchedule,
+        startTime: eventData.startTime + ":00",
+        endTime: eventData.endTime + ":00",
+        eventLocation: eventData.eventLocation,
+        eventIsActive: true
+      };
 
       const response = editMode
         ? await putEvent(editId, payload)
@@ -115,7 +132,8 @@ export const DashboardProvider = ({ children, activeSection, setActiveSection })
       if (response) {
         setMessage(`Event ${editMode ? 'updated' : 'created'} successfully!`);
         resetForms();
-        setActiveSection('viewEvents');
+        fetchEvents();
+        setActiveSection('events'); // ✅ changed from 'viewEvents' to 'events'
       }
     } catch (err) {
       setMessage('Error: ' + (err.response?.data?.message || err.message));
@@ -139,8 +157,8 @@ export const DashboardProvider = ({ children, activeSection, setActiveSection })
         eventName: item.eventName,
         eventDescription: item.eventDescription,
         eventSchedule: item.eventSchedule,
-        startTime: item.startTime,
-        endTime: item.endTime,
+        startTime: item.startTime?.slice(0, 5),
+        endTime: item.endTime?.slice(0, 5),
         eventLocation: item.eventLocation
       });
       setActiveSection('createEvent');
@@ -210,17 +228,24 @@ export const DashboardProvider = ({ children, activeSection, setActiveSection })
 
   return (
     <DashboardContext.Provider value={{
+      activeSection, setActiveSection,
       formData, setFormData,
       studentData, setStudentData,
       eventData, setEventData,
-      editMode, resetForms, setActiveSection,
+      editMode, setEditMode,
+      editId, setEditId,
+      editEntityType,
+      resetForms,
       handleUserInput, handleUserSubmit,
       handleEventSubmit, handleEdit, handleDelete,
       fetchStudents, fetchEventManagers, fetchEvents,
       events, students, eventManagers,
-      loading, renderTable, message
+      loading, renderTable, message, setMessage
     }}>
       {children}
     </DashboardContext.Provider>
   );
 };
+
+export { DashboardProvider, DashboardContext };
+export default DashboardProvider;
