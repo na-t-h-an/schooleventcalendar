@@ -15,8 +15,11 @@ function AdminLogin() {
     setLoading(true);
     setError('');
 
+    // Simulate login delay
     setTimeout(() => {
       if (username === 'admin' && password === 'admin') {
+        // ✅ Store token on successful login
+        localStorage.setItem('admin_token', 'valid');
         navigate('/schooleventcalendar/admindashboard');
       } else {
         setError('Invalid admin credentials. Please try again.');

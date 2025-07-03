@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MessageAlert from '../../EventManager/components/MessageAlert';
+import '../AdminDashboard.css';
+
 
 export default function Section({
   title,
@@ -37,7 +39,7 @@ export default function Section({
     return (
       <div className="section-container">
         <div className="section-header">
-          <button className="back-btn" onClick={handleBackToList}>
+          <button className="cancel-btn" onClick={handleBackToList}>
             ← Back to {title}
           </button>
         </div>
@@ -48,15 +50,16 @@ export default function Section({
 
   return (
     <div className="section-container">
-      <div className="section-header">
+            <div className="section-header">
         <div className="header-left">
-          <h1 className="section-title">{title}</h1>
-          <p className="section-subtitle">{subtitle}</p>
+            <h1 className="section-title">{title}</h1>
+            <p className="section-subtitle">{subtitle}</p>
         </div>
+
         <button className="create-new-btn" onClick={handleCreateNew}>
-          + CREATE NEW
+            + CREATE NEW
         </button>
-      </div>
+        </div>
 
       <MessageAlert message={message} />
 

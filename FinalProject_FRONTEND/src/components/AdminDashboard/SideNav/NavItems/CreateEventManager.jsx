@@ -39,6 +39,7 @@ export default function CreateEventManager({ onBack }) {
   };
 
   return (
+  <div className="create-eventmanager-form-wrapper"> {/* Used to hide Cancel button via CSS */}
     <RegisterForm
       formTitle={editMode ? 'Edit Event Manager' : 'Create Event Manager'}
       submitLabel={editMode ? 'Update' : 'Register'}
@@ -58,5 +59,6 @@ export default function CreateEventManager({ onBack }) {
       onCancel={handleCancel}
       showLoginLink={false}
     />
-  );
+  </div>
+);
 }

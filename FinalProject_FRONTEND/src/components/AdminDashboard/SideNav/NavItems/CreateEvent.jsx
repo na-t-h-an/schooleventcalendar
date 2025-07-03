@@ -92,12 +92,16 @@ export default function CreateEvent({ onBack }) {
   };
 
   return (
-    <EventForm
-      formData={eventData}
-      onChange={handleChange}
-      onSubmit={handleSubmit}
-      onClear={handleClear}
-      editMode={editMode}
-    />
-  );
+  <div className="section-container">
+    <div className="create-event-form-wrapper"> 
+      <EventForm
+        formData={eventData}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        onClear={handleClear}
+        editMode={editMode}
+      />
+    </div>
+  </div>
+);
 }

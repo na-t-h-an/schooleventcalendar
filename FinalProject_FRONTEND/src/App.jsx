@@ -9,6 +9,7 @@ import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import EventManager from './components/EventManager/EventManager';
 import About from './components/LandingPage/components/About';
 import Contact from './components/LandingPage/components/Contact';
+import ProtectedRoute from './components/AdminDashboard/components/ProtectedRoute';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       <Route path="/schooleventcalendar/login" element={<Login />} />
       <Route path="/schooleventcalendar/register" element={<Register />} />
       <Route path="/schooleventcalendar/adminlogin" element={<AdminLogin />} />
-      <Route path="/schooleventcalendar/admindashboard" element={<AdminDashboard />} /> 
+     <Route path="/schooleventcalendar/admindashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
       <Route path="/schooleventcalendar/eventmanager/*" element={<EventManager />} />
       <Route path="/schooleventcalendar/studentdashboard/*" element={<StudentDashboard />} />
     </Routes>
