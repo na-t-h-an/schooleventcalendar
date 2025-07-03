@@ -1,5 +1,3 @@
-import React from 'react';
-
 const EventForm = ({ formData, onChange, onSubmit, onClear, editMode }) => (
   <form onSubmit={onSubmit} className="formContainer">
     <input

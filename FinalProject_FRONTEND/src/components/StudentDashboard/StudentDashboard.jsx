@@ -7,10 +7,12 @@ import useStudentEffects from "./hooks/useStudentEffects";
 
 import StudentHeader from "./components/StudentHeader";
 
-import BrowseEventsPage from "./pages/BrowseEventsPage";
-import JoinedEventsPage from "./pages/JoinedEventsPage";
-import CalendarPage from "./pages/CalendarPage";
-import ProfilePage from "./pages/ProfilePage";
+import {
+  BrowseEventsPage,
+  JoinedEventsPage,
+  CalendarPage,
+  ProfilePage,
+} from "./pages";
 
 import {
   fetchJoinedEvents,
@@ -26,6 +28,13 @@ function StudentDashboard() {
   const studentState = useStudentState();
 
   useStudentEffects(user, studentState);
+
+  if (user.typeUser !== 'S') {
+    window.location.href = '/schooleventcalendar/login';
+    return null;
+  }
+
+  console.log(`Access granted: Logged in as '${user.username}' (type '${user.typeUser}')`);
 
   const {
     events,

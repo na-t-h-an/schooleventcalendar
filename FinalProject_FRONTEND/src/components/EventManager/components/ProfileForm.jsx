@@ -1,5 +1,3 @@
-import React from "react";
-
 const ProfileForm = ({ editData, onChange, onSubmit }) => (
   <>
     <h2>Profile Dashboard</h2>
