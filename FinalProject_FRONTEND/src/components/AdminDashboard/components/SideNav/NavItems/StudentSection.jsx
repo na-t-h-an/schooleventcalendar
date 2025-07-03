@@ -1,29 +1,29 @@
 import React, { useContext } from 'react';
-import { DashboardContext } from '../../DashboardContext';
-import CreateEventManager from './CreateEventManager';
-import Section from '../../components/Section';
+import { DashboardContext } from '../../../context/DashboardContext.jsx';
+import CreateStudent from '../../../pages/CreateStudent';
+import Section from "../../Section";
 
-export default function EventManagerSection() {
+export default function StudentSection() {
   const {
-    eventManagers, fetchEventManagers, loading, message, handleEdit,
+    students, fetchStudents, loading, message, handleEdit,
     handleDelete, editMode, resetForms
   } = useContext(DashboardContext);
 
   return (
     <Section
-      title="Event Managers"
-      subtitle="Manage your event manager accounts"
-      icon="👥"
-      data={eventManagers}
+      title="Students"
+      subtitle="Manage your student accounts"
+      icon="🎓"
+      data={students}
       loading={loading}
       message={message}
-      fetchData={fetchEventManagers}
+      fetchData={fetchStudents}
       resetForms={resetForms}
       editMode={editMode}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
-      onEditType="eventManager"
-      CreateFormComponent={CreateEventManager}
+      onEditType="student"
+      CreateFormComponent={CreateStudent}
       renderTable={(item, actions) => {
         if (!item) {
           return {

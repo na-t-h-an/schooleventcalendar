@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import { DashboardContext } from '../../DashboardContext';
-import RegisterForm from '../../../Register/components/RegisterForm'; // Reuse the same form
+import { DashboardContext } from '../context/DashboardContext.jsx';
+import RegisterForm from '../../Register/components/RegisterForm'; // Reuse the same form
 
 export default function CreateEventManager({ onBack }) {
   const {

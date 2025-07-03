@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SideNav from './SideNav/SideNav';
+import SideNav from './components/SideNav/SideNav';
 import './AdminDashboard.css';
 
 export default function AdminDashboard() {

@@ -134,10 +134,9 @@
 
 /* Form button styles - Make sure all form buttons are styled */
 .form-actions button,
-button[type="button"],
-button[type="submit"],
+
 .submit-btn,
-.cancel-btn,
+.section-back-btn,
 .register-btn {
   padding: 12px 24px;
   border: none;
@@ -170,14 +169,14 @@ button[type="submit"]:hover,
 }
 
 button[type="button"],
-.cancel-btn {
+.section-back-btn {
   background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
   color: white;
   box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
 }
 
 button[type="button"]:hover,
-.cancel-btn:hover {
+.section-back-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(107, 114, 128, 0.4);
 }
@@ -461,11 +460,127 @@ body {
 .create-eventmanager-form-wrapper button[type="button"] {
   display: none !important;
 }
+.create-eventmanager-form-wrapper .form-actions,
+.create-student-form-wrapper .form-actions,
+.create-event-form-wrapper .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Register button specific styling */
+.register-btn {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px; /* Reduced from default */
+  max-width: 150px; /* Set maximum width */
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  margin-left: auto; /* Push to right if not in flex container */
+}
+
+.register-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+/* Alternative: If you want even smaller button */
+.register-btn.compact {
+  padding: 10px 20px;
+  min-width: 100px;
+  max-width: 120px;
+  font-size: 13px;
+}
+
+/* Ensure form buttons container is right-aligned */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  width: 100%;
+}
+
+
+
+/* If you're using a form wrapper, make sure it allows right alignment */
+.create-eventmanager-form-wrapper form,
+.create-student-form-wrapper form,
+.create-event-form-wrapper form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Specific styling for the register button container */
+.register-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+/* Override any default button widths for the register button */
+.create-eventmanager-form-wrapper .register-btn,
+.create-student-form-wrapper .register-btn,
+.create-event-form-wrapper .register-btn {
+  width: auto !important;
+  min-width: 120px !important;
+  max-width: 150px !important;
+  margin-left: auto;
+}
+
+/* Remove white container/background from back button */
+.back-btn {
+  background: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 8px 16px;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-btn:hover {
+  background: rgba(0, 0, 0, 0.05) !important;
+  transform: translateX(-2px);
+}
 
 .create-student-form-wrapper button[type="button"] {
   display: none !important;
 }
 
+.create-eventmanager-form-wrapper .registerButton {
+  width: 240px; /* Make it shorter */
+  margin-left: auto; /* Push it to the right */
+  margin-right: 0; /* Ensure it stays to the right */
+}
+
+.create-student-form-wrapper .registerButton {
+  width: 240px; /* Make it shorter */
+  margin-left: auto; /* Push it to the right */
+  margin-right: 0; /* Ensure it stays to the right */
+}
+
+.your-createevents-wrapper-class .createEventButton {
+  width: 200px; /* Make it shorter */
+  margin-left: auto; /* Push it to the right */
+  margin-right: 0; /* Ensure it stays to the right */
+}
 /* Forms, messages, welcome section, responsive styles – KEEP as is */
 /* Not repeated here for brevity; continue using the remaining CSS you posted */
-

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import { DashboardContext } from '../../DashboardContext';
-import RegisterForm from '../../../Register/components/RegisterForm';
+import { DashboardContext } from '../context/DashboardContext.jsx';
+import RegisterForm from '../../Register/components/RegisterForm';
 
 export default function CreateStudent({ onBack }) {
   const {

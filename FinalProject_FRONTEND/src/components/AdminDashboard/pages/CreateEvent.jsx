@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { DashboardContext } from '../../DashboardContext';
-import { postEvent, putEvent } from '../../../../services/api';
-import EventForm from '../../../EventManager/components/EventForm';
+import { DashboardContext } from '../context/DashboardContext.jsx';
+import { postEvent, putEvent } from '../../../services/api';
+import EventForm from '../../EventManager/components/EventForm';
 
 export default function CreateEvent({ onBack }) {
   const {

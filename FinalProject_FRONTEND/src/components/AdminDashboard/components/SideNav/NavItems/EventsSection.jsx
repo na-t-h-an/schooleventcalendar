@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { DashboardContext } from '../../DashboardContext';
-import CreateEvent from './CreateEvent';
-import Section from '../../components/Section';
+import { DashboardContext } from '../../../context/DashboardContext.jsx';
+import CreateEvent from '../../../pages/CreateEvent';
+import Section from "../../Section";
 
 export default function EventsSection() {
   const {

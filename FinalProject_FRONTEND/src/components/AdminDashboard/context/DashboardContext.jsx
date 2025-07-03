@@ -5,7 +5,7 @@ import {
   createStudent, getStudents,
   updateUser, deleteUser,
   postEvent, getEvents, putEvent, deleteEvent
-} from '../../services/api';
+} from '../../../services/api';
 
 const DashboardContext = createContext();
 

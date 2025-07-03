@@ -2,7 +2,7 @@ import React from 'react';
 import EventManagerSection from './NavItems/EventManagerSection.jsx';
 import StudentSection from './NavItems/StudentSection.jsx';
 import EventsSection from './NavItems/EventsSection.jsx';
-import { DashboardProvider } from '../DashboardContext.jsx';
+import { DashboardProvider } from '../../context/DashboardContext.jsx';
 
 const SideNav = ({ activeSection, onSectionChange, onLogout, onResetForms }) => {
   const handleNavClick = (section, shouldResetForms = false) => {
