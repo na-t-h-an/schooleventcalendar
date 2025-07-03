@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 * {
   box-sizing: border-box;
@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   background-color: #f4f4f4;
 }
 
@@ -69,6 +69,7 @@ ul {
   font-style: italic;
   text-transform: uppercase;
   color: #5d5d5d;
+  cursor: pointer;
 }
 
 .links {
@@ -163,7 +164,7 @@ ul {
 }
 
 .joinButton,
-.leaveButton{
+.leaveButton {
   padding: 10px;
   font-size: 14px;
   font-weight: bold;
@@ -203,13 +204,12 @@ ul {
   transition: background-color 0.3s ease;
 }
 
-
 .studentdashboardLogoutButton:hover {
   background-color: #b82e32;
 }
 
 .studentdashboardUpdateProfileButton {
-  background-color: #007BFF;
+  background-color: #007bff;
   color: white;
   margin-top: 10px;
   padding: 10px 20px;
