@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import './EventManager.css';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 
 import useEventManagerState from './hooks/useEventManagerState';
 import fetchEventsWrapper from './utils/fetchEventsWrapper';
 
-import EventModal from './components/EventModal';
-import HeaderNav from './components/HeaderNav';
+import {
+  EventModal,
+  HeaderNav,
+} from './components';
 
 import {
   handleSubmit,
@@ -30,7 +32,7 @@ function EventManager() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
 
-  if (!user) {
+  if (user.typeUser !== 'E') {
     window.location.href = '/schooleventcalendar/login';
     return null;
   }
