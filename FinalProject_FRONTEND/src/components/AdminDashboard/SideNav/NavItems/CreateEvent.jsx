@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { DashboardContext } from '../../DashboardContext';
 import { postEvent, putEvent } from '../../../../services/api';
-import EventForm from '../../components/EventForm';
+import EventForm from '../../../EventManager/components/EventForm';
 
 export default function CreateEvent({ onBack }) {
   const {
@@ -20,26 +20,26 @@ export default function CreateEvent({ onBack }) {
 
   // ✅ Setup form fields correctly for both create and edit
   useEffect(() => {
-    if (editMode) {
-      setEventData(prev => ({
-        title: prev.eventName || '',
-        description: prev.eventDescription || '',
-        eventDate: prev.eventSchedule || '',
-        startTime: prev.startTime || '',
-        endTime: prev.endTime || '',
-        location: prev.eventLocation || ''
-      }));
-    } else {
-      setEventData({
-        title: '',
-        description: '',
-        eventDate: '',
-        startTime: '',
-        endTime: '',
-        location: ''
-      });
-    }
-  }, [editMode]);
+  if (editMode) {
+    setEventData(prev => ({
+      title: prev.eventName || '',
+      description: prev.eventDescription || '',
+      eventDate: prev.eventSchedule || '',
+      startTime: prev.startTime || '',
+      endTime: prev.endTime || '',
+      location: prev.eventLocation || ''
+    }));
+  } else {
+    setEventData({
+      title: '',
+      description: '',
+      eventDate: '',
+      startTime: '',
+      endTime: '',
+      location: ''
+    });
+  }
+}, [editMode]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
