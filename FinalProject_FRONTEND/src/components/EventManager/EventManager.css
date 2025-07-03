@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 * {
   box-sizing: border-box;
@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   background-color: #f4f4f4;
   overflow-x: hidden;
   font-size: 16px;
@@ -46,6 +46,7 @@ ul {
   font-style: italic;
   text-transform: uppercase;
   color: #5d5d5d;
+  cursor: pointer; /* remove this if not needed for redirecting user to home ty -tumulak */
 }
 
 .links {
@@ -112,7 +113,7 @@ ul {
 
 .formContainer h2 {
   margin-bottom: 10px;
-  color: #37474F;
+  color: #37474f;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -133,7 +134,7 @@ ul {
   border: 1px solid #ccc;
   border-radius: 4px;
   transition: border-color 0.3s;
-  padding: 10px 12px
+  padding: 10px 12px;
 }
 
 .formGroup input:focus,
@@ -342,13 +343,12 @@ ul {
   transition: background-color 0.3s ease;
 }
 
-
 .eventmanagerLogoutButton:hover {
   background-color: #b82e32;
 }
 
 .eventmanagerUpdateProfileButton {
-  background-color: #007BFF;
+  background-color: #007bff;
   color: white;
   margin-top: 15px;
   padding: 10px 20px;
@@ -373,4 +373,3 @@ ul {
   width: 100%;
   box-sizing: border-box;
 }
-

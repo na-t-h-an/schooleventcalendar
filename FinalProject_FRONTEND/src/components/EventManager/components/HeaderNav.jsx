@@ -1,17 +1,48 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-function HeaderNav({ username }) {
+function HeaderNav() {
   const navigate = useNavigate();
 
   return (
     <header className="header">
       <div className="container">
-        <div className="logo">Event Manager Portal</div>
+        <div
+          className="logo"
+          onClick={() =>
+            navigate("/schooleventcalendar/eventmanager/calendarview")
+          }
+        >
+          Event Manager Portal
+        </div>
         <ul className="links">
-          <li onClick={() => navigate('/schooleventcalendar/eventmanager/createvent')}>Create Event</li>
-          <li onClick={() => navigate('/schooleventcalendar/eventmanager/managevent')}>Manage Events</li>
-          <li onClick={() => navigate('/schooleventcalendar/eventmanager/calendarview')}>Calendar View</li>
-          <li onClick={() => navigate('/schooleventcalendar/eventmanager/profile')}>{'User'}</li>
+          <li
+            onClick={() =>
+              navigate("/schooleventcalendar/eventmanager/createvent")
+            }
+          >
+            Create Event
+          </li>
+          <li
+            onClick={() =>
+              navigate("/schooleventcalendar/eventmanager/managevent")
+            }
+          >
+            Manage Events
+          </li>
+          <li
+            onClick={() =>
+              navigate("/schooleventcalendar/eventmanager/calendarview")
+            }
+          >
+            Calendar View
+          </li>
+          <li
+            onClick={() =>
+              navigate("/schooleventcalendar/eventmanager/profile")
+            }
+          >
+            {"User"}
+          </li>
         </ul>
       </div>
     </header>
