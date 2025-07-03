@@ -41,6 +41,7 @@ export default function CreateStudent({ onBack }) {
   };
 
   return (
+  <div className="create-student-form-wrapper"> {/* Used to hide Cancel button via CSS */}
     <RegisterForm
       formTitle={editMode ? 'Edit Student' : 'Create Student'}
       submitLabel={editMode ? 'Update' : 'Register'}
@@ -60,5 +61,6 @@ export default function CreateStudent({ onBack }) {
       onCancel={handleCancel}
       showLoginLink={false}
     />
-  );
+  </div>
+);
 }

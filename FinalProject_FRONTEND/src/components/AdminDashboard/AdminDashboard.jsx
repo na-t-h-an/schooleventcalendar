@@ -16,8 +16,9 @@ export default function AdminDashboard() {
   };
 
   const handleLogout = () => {
-    navigate('/schooleventcalendar/adminlogin');
-  };
+  localStorage.removeItem('admin_token'); // ✅ Remove token
+  navigate('/schooleventcalendar/adminlogin'); // ✅ Redirect to login
+};
 
   return (
     <SideNav
