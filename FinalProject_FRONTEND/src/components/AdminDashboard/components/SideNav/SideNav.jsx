@@ -22,11 +22,13 @@ const SideNav = ({ activeSection, onSectionChange, onLogout, onResetForms }) => 
         return <EventsSection />;
       default:
         return (
-          <div className="welcome-section">
+        <div className="section-container">
+          <div className="content-card" style={{ padding: "40px", textAlign: "center" }}>
             <h2>Welcome to Admin Dashboard</h2>
             <p>Select a section from the sidebar to get started.</p>
           </div>
-        );
+        </div>
+      );
     }
   };
 
