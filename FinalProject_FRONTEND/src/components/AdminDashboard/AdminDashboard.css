@@ -396,7 +396,7 @@ body {
 .modern-table td {
   padding: 20px 24px;
   border-bottom: 1px solid #f3f4f6;
-  color: #6b7280;
+  color: #111827; /* <- DARK BLACK TEXT */
   font-weight: 500;
 }
 
@@ -566,13 +566,15 @@ body {
 }
 
 .create-eventmanager-form-wrapper .registerButton {
-  width: 240px; /* Make it shorter */
+  margin-top: 10px;
+  width: 200px; /* Make it shorter */
   margin-left: auto; /* Push it to the right */
   margin-right: 0; /* Ensure it stays to the right */
 }
 
 .create-student-form-wrapper .registerButton {
-  width: 240px; /* Make it shorter */
+  margin-top: 10px;
+  width: 200px; /* Make it shorter */
   margin-left: auto; /* Push it to the right */
   margin-right: 0; /* Ensure it stays to the right */
 }

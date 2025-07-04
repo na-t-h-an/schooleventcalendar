@@ -53,7 +53,7 @@ export default function Section({
       {isFormMode ? (
         <>
           <button className="section-back-btn" onClick={handleBackToList}>
-            ← Back to {title}
+            ← Back
           </button>
           <CreateFormComponent onBack={handleBackToList} />
         </>

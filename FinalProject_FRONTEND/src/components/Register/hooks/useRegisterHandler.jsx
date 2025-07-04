@@ -35,7 +35,7 @@ export const useRegisterHandler = () => {
       const response = await createStudent(studentData);
 
       if (response) {
-        setMessage('Registration successful! You can now login.');
+        setMessage('Registration successful!');
         
         // Redirect to login page after 1 second
         setTimeout(() => {
