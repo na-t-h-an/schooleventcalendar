@@ -1,5 +1,3 @@
-import React from 'react';
-
 const EventTable = ({ events, onEdit, onDelete }) => (
   <table className="dataTable">
     <thead>

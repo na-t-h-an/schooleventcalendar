@@ -1,16 +1,18 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import './StudentDashboard.css';
+import { Routes, Route, Navigate } from "react-router-dom";
+import "./StudentDashboard.css";
 
-import useStudentUser from './hooks/useStudentUser';
-import useStudentState from './hooks/useStudentState';
-import useStudentEffects from './hooks/useStudentEffects';
+import useStudentUser from "./hooks/useStudentUser";
+import useStudentState from "./hooks/useStudentState";
+import useStudentEffects from "./hooks/useStudentEffects";
 
-import StudentHeader from './components/StudentHeader';
+import StudentHeader from "./components/StudentHeader";
 
-import BrowseEventsPage from './pages/BrowseEventsPage';
-import JoinedEventsPage from './pages/JoinedEventsPage';
-import CalendarPage from './pages/CalendarPage';
-import ProfilePage from './pages/ProfilePage';
+import {
+  BrowseEventsPage,
+  JoinedEventsPage,
+  CalendarPage,
+  ProfilePage,
+} from "./pages";
 
 import {
   fetchJoinedEvents,
@@ -18,14 +20,21 @@ import {
   handleLeaveEvent,
   handleEditChange,
   handleProfileUpdate,
-  handleLogout
-} from './functions';
+  handleLogout,
+} from "./functions";
 
 function StudentDashboard() {
   const { user, username } = useStudentUser();
   const studentState = useStudentState();
 
   useStudentEffects(user, studentState);
+
+  if (user.typeUser !== 'S') {
+    window.location.href = '/schooleventcalendar/login';
+    return null;
+  }
+
+  console.log(`Access granted: Logged in as '${user.username}' (type '${user.typeUser}')`);
 
   const {
     events,
@@ -38,10 +47,10 @@ function StudentDashboard() {
     setEditData,
     setJoinedEvents,
     setLoading,
-    setMessage
+    setMessage,
   } = studentState;
 
-  const calendarEvents = events.map(evt => ({
+  const calendarEvents = events.map((evt) => ({
     id: evt.eventId,
     title: evt.eventName,
     start: `${evt.eventSchedule}T${evt.startTime}`,
@@ -49,13 +58,13 @@ function StudentDashboard() {
     extendedProps: {
       description: evt.eventDescription,
       location: evt.eventLocation,
-      status: evt.eventIsActive ? 'Active' : 'Inactive'
-    }
+      status: evt.eventIsActive ? "Active" : "Inactive",
+    },
   }));
 
   return (
     <div className="landingPage">
-      <StudentHeader username={username} />
+      <StudentHeader />
       <div className="content">
         <div className="wrapper">
           <Routes>
@@ -70,7 +79,12 @@ function StudentDashboard() {
                   loading={loading}
                   onJoin={(eventId) =>
                     handleRegister(eventId, username, setMessage, () =>
-                      fetchJoinedEvents(username, setJoinedEvents, setLoading, setMessage)
+                      fetchJoinedEvents(
+                        username,
+                        setJoinedEvents,
+                        setLoading,
+                        setMessage
+                      )
                     )
                   }
                 />
@@ -86,7 +100,12 @@ function StudentDashboard() {
                   loading={loading}
                   onLeave={(eventId) =>
                     handleLeaveEvent(eventId, username, setMessage, () =>
-                      fetchJoinedEvents(username, setJoinedEvents, setLoading, setMessage)
+                      fetchJoinedEvents(
+                        username,
+                        setJoinedEvents,
+                        setLoading,
+                        setMessage
+                      )
                     )
                   }
                 />
@@ -103,7 +122,12 @@ function StudentDashboard() {
                   message={message}
                   onJoin={(eventId) =>
                     handleRegister(eventId, username, setMessage, () =>
-                      fetchJoinedEvents(username, setJoinedEvents, setLoading, setMessage)
+                      fetchJoinedEvents(
+                        username,
+                        setJoinedEvents,
+                        setLoading,
+                        setMessage
+                      )
                     )
                   }
                 />
@@ -117,7 +141,9 @@ function StudentDashboard() {
                   username={username}
                   editData={editData}
                   onChange={(e) => handleEditChange(e, setEditData, editData)}
-                  onSubmit={(e) => handleProfileUpdate({e,user,editData,setMessage})}
+                  onSubmit={(e) =>
+                    handleProfileUpdate({ e, user, editData, setMessage })
+                  }
                   message={message}
                   onLogout={handleLogout}
                 />

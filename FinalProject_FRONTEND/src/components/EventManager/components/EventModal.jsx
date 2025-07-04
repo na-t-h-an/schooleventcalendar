@@ -1,5 +1,3 @@
-import React from 'react';
-
 const EventModal = ({ event, onClose, onEdit }) => {
   if (!event) return null;
 

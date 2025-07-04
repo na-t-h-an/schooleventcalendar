@@ -3,7 +3,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
-import MessageAlert from '@/components/EventManager/components/MessageAlert'; // or local version
+import MessageAlert from '@/components/EventManager/components/MessageAlert';
 import StudentEventModal from '../components/StudentEventModal';
 
 const CalendarPage = ({ calendarEvents, selectedEvent, setSelectedEvent, message, onJoin }) => (
