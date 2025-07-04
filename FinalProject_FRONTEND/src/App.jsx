@@ -7,8 +7,6 @@ import StudentDashboard from './components/StudentDashboard/StudentDashboard';
 import AdminLogin from './components/AdminLogin/AdminLogin';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import EventManager from './components/EventManager/EventManager';
-import About from './components/LandingPage/components/About';
-import Contact from './components/LandingPage/components/Contact';
 import ProtectedRoute from './components/AdminDashboard/components/ProtectedRoute';
 
 function App() {
@@ -16,8 +14,6 @@ function App() {
     <Routes>
       <Route path="/" element={<Navigate to="/schooleventcalendar/landing"/>} />
       <Route path="/schooleventcalendar/landing" element={<LandingPage />} />
-      <Route path="/schooleventcalendar/about" element={<About />} />
-      <Route path="/schooleventcalendar/contact" element={<Contact />} />
       <Route path="/schooleventcalendar/login" element={<Login />} />
       <Route path="/schooleventcalendar/register" element={<Register />} />
       <Route path="/schooleventcalendar/adminlogin" element={<AdminLogin />} />
